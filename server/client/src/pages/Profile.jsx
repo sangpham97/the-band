@@ -8,10 +8,10 @@ import {
   Avatar,
 } from '@material-ui/core'
 import AddIcon from '@material-ui/icons/Add'
-import axios from 'axios'
 import { useState } from 'react'
 import noAvatar from '../assets/img/no-avatar.png'
 import { useSelector } from 'react-redux'
+import { axiosIstance } from '../config'
 
 export default function Profile() {
   const currentUser = useSelector((state) => state.user.user)
@@ -36,13 +36,13 @@ export default function Profile() {
       data.append('file', file)
       updatedUser.profilePic = filename
       try {
-        await axios.post('/upload', data)
+        await axiosIstance.post('/upload', data)
       } catch (err) {
         console.log(err)
       }
     }
     try {
-      await axios.put('/users/' + currentUser._id, updatedUser)
+      await axiosIstance.put('/users/' + currentUser._id, updatedUser)
       window.location.replace('/')
     } catch (err) {}
   }

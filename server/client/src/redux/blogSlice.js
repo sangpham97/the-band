@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import axios from 'axios'
+import { axiosIstance } from '../config'
 
 export const getBlogs = createAsyncThunk('/blogs', async (qurey) => {
-  const response = await axios.get('/posts/' + qurey)
+  const response = await axiosIstance.get('/posts/' + qurey)
   return response.data
 })
 

@@ -7,9 +7,9 @@ import {
   Button,
 } from '@material-ui/core'
 import React, { useState } from 'react'
-import axios from 'axios'
 import BackgroundFull from '../components/BackgroundFull'
 import { Link, useHistory } from 'react-router-dom'
+import { axiosIstance } from '../config'
 
 export default function Register() {
   const history = useHistory()
@@ -25,7 +25,7 @@ export default function Register() {
       password,
     }
     try {
-      await axios.post('/users/register', user)
+      await axiosIstance.post('/users/register', user)
       history.push('/sign-in')
     } catch (err) {
       console.log(err)

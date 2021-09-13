@@ -1,9 +1,9 @@
-import axios from 'axios'
+import { axiosIstance } from '../config'
 import { getBlog } from './blogSlice'
 
 export const getOneBlog = async (dispatch, id) => {
   try {
-    const res = await axios.get('/posts/' + id)
+    const res = await axiosIstance.get('/posts/' + id)
     dispatch(getBlog(res.data))
   } catch (err) {
     console.log(err)

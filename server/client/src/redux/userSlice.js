@@ -1,9 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import axios from 'axios'
+import { axiosIstance } from '../config'
 
 export const LoginAction = createAsyncThunk('login', async (user) => {
   try {
-    const response = await axios.post('/users/login', user)
+    const response = await axiosIstance.post('/users/login', user)
     if (response) {
       localStorage.setItem('user', JSON.stringify(response.data))
     }

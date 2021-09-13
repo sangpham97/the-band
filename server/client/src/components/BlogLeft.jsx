@@ -6,7 +6,6 @@ import {
   CardMedia,
   CardContent,
 } from '@material-ui/core'
-import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -14,9 +13,10 @@ import noAvatar from '../assets/img/no-avatar.png'
 
 // import { blogs } from '../utils'
 import { getOneCate } from '../redux/CateApi'
+import { axiosIstance } from '../config'
 
 export default function BlogLeft() {
-  const PF = 'http://localhost:8800/images/'
+  const PF = 'https://bandsangdev.herokuapp.com/images'
   const newBlog = useSelector((state) => state.blogs.blogs)[0]
   const category = useSelector((state) => state.cates.cate)
   const dispatch = useDispatch()
@@ -38,7 +38,7 @@ export default function BlogLeft() {
 }
 
 export const BlogLeftArticle = ({ category, newBlog }) => {
-  const PF = 'http://localhost:8800/images/'
+  const PF = 'https://bandsangdev.herokuapp.com/images'
   const history = useHistory()
   const handleNavigate = (id) => {
     history.push('/blog/' + id)
@@ -115,7 +115,7 @@ export const ListBlogs = () => {
 }
 
 export const Blog = ({ blog }) => {
-  const PF = 'http://localhost:8800/images/'
+  const PF = 'https://bandsangdev.herokuapp.com/images'
   const history = useHistory()
   const handleNavigate = (id) => {
     history.push('/blog/' + id)
@@ -171,7 +171,7 @@ export const SingleCategory = ({ item }) => {
   useEffect(() => {
     const getOneCategory = async () => {
       try {
-        const res = await axios.get('/categories/' + item)
+        const res = await axiosIstance.get('/categories/' + item)
         setCategory(res.data)
       } catch (err) {
         console.log(err)

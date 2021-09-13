@@ -15,8 +15,8 @@ import {
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import AddIcon from '@material-ui/icons/Add'
-import axios from 'axios'
 import { getCates } from '../redux/categorySlice'
+import { axiosIstance } from '../config'
 
 export default function CreatePost() {
   const [title, setTitle] = useState('')
@@ -51,13 +51,13 @@ export default function CreatePost() {
       data.append('file', file)
       newPost.photo = filename
       try {
-        await axios.post('/upload', data)
+        await axiosIstance.post('/upload', data)
       } catch (err) {
         console.log(err)
       }
     }
     try {
-      const res = await axios.post('/posts', newPost)
+      const res = await axiosIstance.post('/posts', newPost)
       window.location.replace('/blog/' + res.data._id)
     } catch (err) {}
   }
