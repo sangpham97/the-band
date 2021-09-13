@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom'
 import { logout } from '../redux/userSlice'
 
 export default function UserInfo({ User, noAvatar }) {
-  const PF = 'https://bandsangdev.herokuapp.com/images'
+  const PF = 'https://bandsangdev.herokuapp.com/images/'
   const [anchorEl, setAnchorEl] = React.useState(null)
   const history = useHistory()
   const dispatch = useDispatch()

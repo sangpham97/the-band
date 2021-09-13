@@ -84,7 +84,7 @@ export default function SinglePost() {
 }
 
 export const Post = () => {
-  const PF = 'https://bandsangdev.herokuapp.com/images'
+  const PF = 'https://bandsangdev.herokuapp.com/images/'
   const { id } = useParams()
   const post = useSelector((state) => state.blogs.blog)
   const category = useSelector((state) => state.cates.cate)

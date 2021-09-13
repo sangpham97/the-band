@@ -16,7 +16,7 @@ import { getOneCate } from '../redux/CateApi'
 import { axiosIstance } from '../config'
 
 export default function BlogLeft() {
-  const PF = 'https://bandsangdev.herokuapp.com/images'
+  const PF = 'https://bandsangdev.herokuapp.com/images/'
   const newBlog = useSelector((state) => state.blogs.blogs)[0]
   const category = useSelector((state) => state.cates.cate)
   const dispatch = useDispatch()
@@ -38,7 +38,7 @@ export default function BlogLeft() {
 }
 
 export const BlogLeftArticle = ({ category, newBlog }) => {
-  const PF = 'https://bandsangdev.herokuapp.com/images'
+  const PF = 'https://bandsangdev.herokuapp.com/images/'
   const history = useHistory()
   const handleNavigate = (id) => {
     history.push('/blog/' + id)
@@ -115,7 +115,7 @@ export const ListBlogs = () => {
 }
 
 export const Blog = ({ blog }) => {
-  const PF = 'https://bandsangdev.herokuapp.com/images'
+  const PF = 'https://bandsangdev.herokuapp.com/images/'
   const history = useHistory()
   const handleNavigate = (id) => {
     history.push('/blog/' + id)
